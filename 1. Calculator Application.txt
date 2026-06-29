@@ -1,0 +1,39 @@
+1. Calculator Application 
+import { useState } from "react"; 
+function App() { 
+const [a,setA]=useState(0); 
+const [b,setB]=useState(0); 
+const [r,setR]=useState(0); 
+return ( 
+<div> 
+<h2>Calculator</h2> 
+<input type="number" onChange={(e)=>setA(+e.target.value)} /> 
+<input type="number" onChange={(e)=>setB(+e.target.value)} /> 
+<br/><br/> 
+<button onClick={()=>setR(a+b)}>+</button> 
+<button onClick={()=>setR(a-b)}>-</button> 
+<button onClick={()=>setR(a*b)}>*</button> 
+<button onClick={()=>setR(a/b)}>/</button> 
+<h3>Result: {r}</h3> 
+</div> 
+); 
+} 
+export default App; 
+
+
+2. React Voting Application 
+import {useState} from "react"; 
+function App() { 
+const [a,setA]=useState(0); 
+const [b,setB]=useState(0); 
+return ( 
+<div> 
+<h2>Voting App</h2> 
+<h3>Candidate A: {a}</h3> 
+<button onClick={()=>setA(a+1)}>Vote A</button> 
+<h3>Candidate B: {b}</h3> 
+<button onClick={()=>setB(b+1)}>Vote B</button> 
+</div> 
+); 
+} 
+export default App;

@@ -1,0 +1,57 @@
+3. React Login Interface with Validation 
+import {useState} from "react"; 
+function App() { 
+const [user,setUser]=useState(""); 
+const [pass,setPass]=useState(""); 
+const [msg,setMsg]=useState(""); 
+const login=()=>{ 
+if(user==="" || pass==="") 
+setMsg("Enter Username and Password"); 
+else 
+setMsg("Login Successful"); 
+} 
+return ( 
+<div> 
+<h2>Login</h2> 
+<input placeholder="Username" onChange={(e)=>setUser(e.target.value)} /> 
+<br/><br/> 
+<input type="password"   placeholder="Password"  onChange={(e)=>setPass(e.target.value)} /> 
+<br/><br/> 
+<button onClick={login}>Login</button> 
+<p>{msg}</p> 
+</div> 
+); 
+} 
+export default App; 
+
+
+4. React Bootstrap Form 
+After navigating to the said folder(step 3),   
+Install Bootstrap : npm install react-bootstrap bootstrap 
+Then Modify src/App.js as below 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import {Form,Button} from "react-bootstrap"; 
+function App(){ 
+return( 
+<div className="container"> 
+<h2>User Form</h2> 
+<Form> 
+<Form.Group> 
+<Form.Label>Name</Form.Label> 
+<Form.Control type="text"/> 
+</Form.Group> 
+<Form.Group> 
+<Form.Label>Email</Form.Label> 
+<Form.Control type="email"/> 
+</Form.Group> 
+<Form.Group> 
+<Form.Label>Age</Form.Label> 
+<Form.Control type="number"/> 
+</Form.Group> 
+<br/> 
+<Button>Submit</Button> 
+</Form> 
+</div> 
+); 
+} 
+export default App;
