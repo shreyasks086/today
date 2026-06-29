@@ -1,0 +1,57 @@
+5. Responsive Image Interaction 
+Execution steps same as program 4. 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+function App(){ 
+return( 
+<div className="container text-center"> 
+<h2>Responsive Image</h2> 
+<img 
+src="https://picsum.photos/400" 
+className="img-fluid" 
+alt="demo" 
+onClick={()=>alert("Image Clicked")} 
+/> 
+</div> 
+); 
+} 
+export default App; 
+
+
+6. Node.js Custom Server (HTTP, OS, Path, Event) 
+Execution steps as below. 
+1: Create Folder : mkdir node-server 
+2: Enter Folder: cd node-server 
+3: Create File server.js 
+4: Add Code to the file. 
+5: Run Server: node server.js 
+6: Open Browser: http://localhost:3000 
+const http=require("http"); 
+const os=require("os"); 
+const path=require("path"); 
+const EventEmitter=require("events"); 
+const event=new EventEmitter(); 
+event.on("msg",()=>{ console.log("Event Triggered"); }); 
+http.createServer((req,res)=>{ 
+event.emit("msg"); 
+res.write("OS:"+os.platform()+"\n"); 
+res.write("File:"+path.basename(__filename)); 
+res.end(); 
+}).listen(3000); 
+console.log("Server running at port 3000"); 
+
+
+
+7. Express JS Web Server 
+Execution steps as below. 
+1: Create Folder: mkdir express-app 
+2: Enter Folder: cd express-app 
+3: Initialize Node : npm init -y 
+4: Install Express  :   npm install express 
+5: Create File app.js  
+6: Add Code 
+7. Run Server : node app.js 
+8: Open Browser : http://localhost:3000 
+const express=require("express"); 
+const app=express(); 
+app.get("/",(req,res)=>{ res.send("Hello from Express Server");   }); 
+app.listen(3000,()=>{ console.log("Server running on port 3000"); });
