@@ -1,0 +1,78 @@
+8. MongoDB Basic Operation 
+1. Install MongoDB Community Server. 
+2. Create project folder:  
+mkdir mongo-app 
+cd mongo-app 
+3. Initialize project. 
+npm init -y 
+4. Install MongoDB driver. 
+npm install mongodb 
+5. Create file db.js. 
+6.    Add Code 
+7.   Run program. 
+node db.js 
+const {MongoClient}=require("mongodb"); 
+MongoClient.connect("mongodb://127.0.0.1:27017") 
+.then(client=>{ 
+const db=client.db("test"); 
+db.collection("users").insertOne({ 
+name:"John", 
+age:22 
+}); 
+console.log("Data Inserted"); 
+}); 
+
+
+9. MERN Stack Full Application 
+Backend Setup 
+Create folder>mkdir backend>cd backend 
+Install packages 
+npm init -y 
+npm install express mongoose cors 
+Create server.js 
+const express=require("express"); 
+const mongoose=require("mongoose"); 
+const cors=require("cors"); 
+mongoose.connect("mongodb://127.0.0.1:27017/mern"); 
+const User=mongoose.model("User",{name:String}); 
+const app=express(); 
+app.use(cors()); 
+app.use(express.json()); 
+app.post("/add",async(req,res)=>{ 
+const u=new User(req.body); 
+await u.save(); 
+res.send("Saved"); 
+}); 
+app.get("/users",async(req,res)=>{ 
+const data=await User.find(); 
+res.send(data); 
+}); 
+app.listen(5000); 
+Run backend 
+node server.js 
+_________________________________________________________________________________________________ 
+Frontend Setup 
+Create React project: npx create-react-app frontend>cd frontend 
+Install axios: npm install axios 
+Edit src/App.js 
+Run frontend 
+npm start 
+import {useState,useEffect} from "react"; 
+import axios from "axios"; 
+function App(){ 
+const [name,setName]=useState(""); 
+const [users,setUsers]=useState([]); 
+const add=()=>{   axios.post("http://localhost:5000/add",{name});    } 
+useEffect(()=>{  
+axios.get("http://localhost:5000/users") 
+.then(res=>setUsers(res.data)); 
+},[]); 
+return( 
+<div> 
+<input onChange={(e)=>setName(e.target.value)} /> 
+<button onClick={add}>Add</button> 
+{users.map(u=><p key={u._id}>{u.name}</p>)} 
+</div> 
+); 
+} 
+export default App;
